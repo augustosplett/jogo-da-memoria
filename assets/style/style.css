@@ -1,0 +1,31 @@
+.box-carta{
+    height: 250px;
+    width: 150px;
+    perspective: 500px;
+}
+.carta{
+    height: 100%;
+    width: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.box-carta:hover .carta{
+    
+    transform: rotateY(180deg);
+
+}
+.anverso-carta{
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    background-color: lightblue;
+    border-radius: 15px;
+}
+
+.verso-carta{
+    position: absolute;
+    backface-visibility: hidden;
+    background-color: lightcoral;
+    border-radius: 15px;
+}
+
