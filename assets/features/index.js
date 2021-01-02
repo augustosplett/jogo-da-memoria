@@ -23,7 +23,7 @@ board.addEventListener('click', carta =>{
             }else{
                 limpaTudo();
             }
-        },2000);
+        },800);
     };
 })
 
@@ -46,3 +46,46 @@ function limpaTudo(){
     mostrar = null;
     figura = null;
 };
+
+var animais = ['bear', 'coala', 'jacare', 'lion', 'rena'];
+
+//https://github.com/Daplie/knuth-shuffle/blob/master/index.js
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  };
+
+function novoJogo(){
+    board.innerHTML = null;
+
+    for(let i=1; i<3; i++){
+        var texto = '';
+
+        shuffle(animais).forEach(el =>{
+            texto = texto + 
+            `<div class="box-carta">
+            <input type="checkbox" id="switch">
+            <div class="carta">
+                <div class="verso-carta "><img class="cards" src="assets/img/versoCartas.png" /></div>
+                <div class="anverso-carta "><img class="cards" id="${el}" src="assets/img/${el}.png" /></div>
+            </div>                
+            </div>` 
+
+        })
+
+        board.innerHTML += texto;
+    }
+}
