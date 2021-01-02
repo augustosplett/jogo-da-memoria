@@ -1,7 +1,9 @@
 .box-carta{
+    
     height: 250px;
     width: 150px;
     perspective: 500px;
+    
 }
 .carta{
     height: 100%;
@@ -30,5 +32,8 @@
 }
 #switch:checked ~  .carta {
     transform: rotateY(180deg);
-  }
-
+}
+.board{
+    max-width: 800px;
+    height: 600px;
+}
