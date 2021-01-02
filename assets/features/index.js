@@ -1,18 +1,52 @@
 const board = document.querySelector('.board');
+var cartaAnterior;
+var anterior;
+
+function isEmpty(obj) {
+    return Object.keys(obj).length === 0 && obj.constructor === Object;
+};
+
+function viraDesvira(carta){
+    if(carta.checked){
+        carta.checked = false;
+    }else{
+        carta.checked = true;
+    }
+};
+
+function limpaTudo(){
+    cartaAnterior = null;
+    anterior = null;
+};
 
 board.addEventListener('click', carta =>{
     
-    const virar = carta.target.parentElement.parentElement.parentElement;
-    console.log(virar);
-    const checkboxx = virar.querySelector('#switch')
-    if(checkboxx.checked){
-        checkboxx.checked = false;
+    let virar = carta.target.parentElement.parentElement.parentElement;
+    let mostrar = virar.querySelector('#switch');
+    let figura = virar.querySelector('.anverso-carta').childNodes[0].src;
+    
+    if(cartaAnterior == null){
+        cartaAnterior = figura;
+        anterior = mostrar;
+        viraDesvira(mostrar);
     }else{
-        checkboxx.checked = true
+        viraDesvira(mostrar);
+        setTimeout(()=>{        
+            if(cartaAnterior!==figura){
+                viraDesvira(mostrar);
+                viraDesvira(anterior);
+                limpaTudo();
+                virar = null;
+                mostrar = null;
+                figura = null;
+
+            }else{
+                virar = null;
+                mostrar = null;
+                figura = null;
+                cartaAnterior = null;
+                anterior = null;
+            }
+        },2000);
     }
-
-    console.log(checkboxx);
-    //virar.style.transform = "rotateY(180deg)";
-
-
 })
