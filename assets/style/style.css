@@ -6,13 +6,8 @@
 .carta{
     height: 100%;
     width: 100%;
-    transition: transform 0.8s;
+    transition: transform 1s;
     transform-style: preserve-3d;
-}
-.box-carta:hover .carta{
-    
-    transform: rotateY(180deg);
-
 }
 .anverso-carta{
     position: absolute;
@@ -21,11 +16,19 @@
     background-color: lightblue;
     border-radius: 15px;
 }
-
 .verso-carta{
     position: absolute;
     backface-visibility: hidden;
     background-color: lightcoral;
     border-radius: 15px;
 }
+.cards{
+    border-radius: 15px;
+}
+#switch{
+    display: none;
+}
+#switch:checked ~  .carta {
+    transform: rotateY(180deg);
+  }
 
