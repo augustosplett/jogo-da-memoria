@@ -1,3 +1,11 @@
+.board{
+    max-width: 800px;
+    height: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 5px;
+}
 .box-carta{
     
     height: 250px;
@@ -33,7 +41,4 @@
 #switch:checked ~  .carta {
     transform: rotateY(180deg);
 }
-.board{
-    max-width: 800px;
-    height: 600px;
-}
+
